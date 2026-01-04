@@ -1,37 +1,40 @@
-import sys
+# app.py
+
+def calculate_grade(m1, m2, m3):
+    average = (m1 + m2 + m3) / 3
+
+    if 90 <= average <= 100:
+        return average, "S"
+    elif 80 <= average <= 89:
+        return average, "A"
+    elif 65 <= average <= 79:
+        return average, "B"
+    elif 50 <= average <= 64:
+        return average, "C"
+    elif 40 <= average <= 49:
+        return average, "D"
+    else:
+        return average, "F"
+
 
 def main():
-    # Step 1: Read argument from Jenkins
-    if len(sys.argv) > 1:
-        name = sys.argv[1]
-    else:
-        name = "Student"
+    name = input("Enter Student Name: ")
+    department = input("Enter Department: ")
+    semester = input("Enter Semester: ")
 
-    # Step 2: Fixed values (CI/CD safe)
-    department = "CSE"
-    semester = 5
-    m1, m2, m3 = 70, 80, 90
+    m1 = float(input("Enter Marks for Subject 1: "))
+    m2 = float(input("Enter Marks for Subject 2: "))
+    m3 = float(input("Enter Marks for Subject 3: "))
 
-    avg = (m1 + m2 + m3) / 3
+    avg, grade = calculate_grade(m1, m2, m3)
 
-    # Step 3: Grade logic
-    if avg >= 90:
-        grade = "S"
-    elif avg >= 80:
-        grade = "A"
-    elif avg >= 65:
-        grade = "B"
-    elif avg >= 50:
-        grade = "C"
-    elif avg >= 40:
-        grade = "D"
-    else:
-        grade = "F"
+    print("\n----- Student Result -----")
+    print("Name       :", name)
+    print("Department :", department)
+    print("Semester   :", semester)
+    print("Average    :", round(avg, 2))
+    print("Grade      :", grade)
 
-    # Step 4: Output
-    print("Name:", name)
-    print("Average:", avg)
-    print("Grade:", grade)
 
 if __name__ == "__main__":
     main()
