@@ -1,30 +1,27 @@
 # app.py
+import sys
 
 def calculate_grade(m1, m2, m3):
-    average = (m1 + m2 + m3) / 3
-
-    if 90 <= average <= 100:
-        return average, "S"
-    elif 80 <= average <= 89:
-        return average, "A"
-    elif 65 <= average <= 79:
-        return average, "B"
-    elif 50 <= average <= 64:
-        return average, "C"
-    elif 40 <= average <= 49:
-        return average, "D"
-    else:
-        return average, "F"
-
+    avg = (m1 + m2 + m3) / 3
+    if 90 <= avg <= 100: return avg, "S"
+    elif 80 <= avg <= 89: return avg, "A"
+    elif 65 <= avg <= 79: return avg, "B"
+    elif 50 <= avg <= 64: return avg, "C"
+    elif 40 <= avg <= 49: return avg, "D"
+    else: return avg, "F"
 
 def main():
-    name = input("Enter Student Name: ")
-    department = input("Enter Department: ")
-    semester = input("Enter Semester: ")
+    # Check if all arguments are provided
+    if len(sys.argv) != 7:
+        print("Usage: python app.py <Name> <Department> <Semester> <Mark1> <Mark2> <Mark3>")
+        sys.exit(1)
 
-    m1 = float(input("Enter Marks for Subject 1: "))
-    m2 = float(input("Enter Marks for Subject 2: "))
-    m3 = float(input("Enter Marks for Subject 3: "))
+    name = sys.argv[1]
+    department = sys.argv[2]
+    semester = sys.argv[3]
+    m1 = float(sys.argv[4])
+    m2 = float(sys.argv[5])
+    m3 = float(sys.argv[6])
 
     avg, grade = calculate_grade(m1, m2, m3)
 
@@ -34,7 +31,6 @@ def main():
     print("Semester   :", semester)
     print("Average    :", round(avg, 2))
     print("Grade      :", grade)
-
 
 if __name__ == "__main__":
     main()
