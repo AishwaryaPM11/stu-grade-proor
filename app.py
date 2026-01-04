@@ -1,32 +1,31 @@
-import sys
+# student_grade.py
 
-def calculate_grade(avg):
-    if avg >= 90:
-        return "S"
-    elif avg >= 80:
-        return "A"
-    elif avg >= 65:
-        return "B"
-    elif avg >= 50:
-        return "C"
-    elif avg >= 40:
-        return "D"
-    else:
-        return "F"
+name = input("Enter Student Name: ")
+department = input("Enter Department: ")
+semester = input("Enter Semester: ")
 
-def main():
-    if len(sys.argv) > 1:
-        name = sys.argv[1]
-    else:
-        name = "Student"
+m1 = float(input("Enter Marks for Subject 1: "))
+m2 = float(input("Enter Marks for Subject 2: "))
+m3 = float(input("Enter Marks for Subject 3: "))
 
-    m1, m2, m3 = 70, 80, 90
-    avg = (m1 + m2 + m3) / 3
-    grade = calculate_grade(avg)
+average = (m1 + m2 + m3) / 3
 
-    print("Name:", name)
-    print("Average:", avg)
-    print("Grade:", grade)
+if 90 <= average <= 100:
+    grade = "S"
+elif 80 <= average <= 89:
+    grade = "A"
+elif 65 <= average <= 79:
+    grade = "B"
+elif 50 <= average <= 64:
+    grade = "C"
+elif 40 <= average <= 49:
+    grade = "D"
+else:
+    grade = "F"
 
-if __name__ == "__main__":
-    main()
+print("\n----- Student Result -----")
+print("Name       :", name)
+print("Department :", department)
+print("Semester   :", semester)
+print("Average    :", round(average, 2))
+print("Grade      :", grade)
