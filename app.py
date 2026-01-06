@@ -4,15 +4,23 @@ import sys
 def calculate_grade(m1, m2, m3):
     avg = (m1 + m2 + m3) / 3
 
-    if avg >= 90: return avg, "S"
-    elif avg >= 80: return avg, "A"
-    elif avg >= 65: return avg, "B"
-    elif avg >= 50: return avg, "C"
-    elif avg >= 40: return avg, "D"
-    else: return avg, "F"
+    if avg >= 90:
+        grade = "S"
+    elif avg >= 80:
+        grade = "A"
+    elif avg >= 65:
+        grade = "B"
+    elif avg >= 50:
+        grade = "C"
+    elif avg >= 40:
+        grade = "D"
+    else:
+        grade = "F"
+
+    return avg, grade
+
 
 def main():
-    # If arguments are provided
     if len(sys.argv) == 7:
         name = sys.argv[1]
         department = sys.argv[2]
@@ -21,27 +29,26 @@ def main():
         m2 = float(sys.argv[5])
         m3 = float(sys.argv[6])
     else:
-        # Default values
         name = "Padmini"
-        department = "Bcom"
-        semester = "4"
-        m1 = 75
-        m2 = 80
-        m3 = 75
+        department = "BCA"
+        semester = "3"
+        m1, m2, m3 = 70, 80, 90
 
     avg, grade = calculate_grade(m1, m2, m3)
 
+    print("\n===================================")
     print("        STUDENT RESULT")
-    print("===================")
-    print(f"Student Name : {name}")
-    print(f"Department   : {department}")
-    print(f"Semester     : {semester}")
+    print("===================================")
+    print("Student Name :", name)
+    print("Department   :", department)
+    print("Semester     :", semester)
     print("-----------------------------------")
-    print(f"Marks        : {m1}, {m2}, {m3}")
-    print(f"Total Marks  : {m1 + m2 + m3}")
-    print(f"Average      : {avg:.2f}")
-    print(f"Grade        : {grade}")
-    print("====================\n")
+    print("Marks        :", m1, m2, m3)
+    print("Total Marks  :", m1 + m2 + m3)
+    print("Average      :", round(avg, 2))
+    print("Grade        :", grade)
+    print("===================================\n")
+
 
 if __name__ == "__main__":
     main()
