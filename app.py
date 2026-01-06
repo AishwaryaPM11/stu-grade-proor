@@ -1,40 +1,47 @@
 # app.py
+import sys
 
 def calculate_grade(m1, m2, m3):
-    average = (m1 + m2 + m3) / 3
+    avg = (m1 + m2 + m3) / 3
 
-    if 90 <= average <= 100:
-        return average, "S"
-    elif 80 <= average <= 89:
-        return average, "A"
-    elif 65 <= average <= 79:
-        return average, "B"
-    elif 50 <= average <= 64:
-        return average, "C"
-    elif 40 <= average <= 49:
-        return average, "D"
-    else:
-        return average, "F"
-
+    if avg >= 90: return avg, "S"
+    elif avg >= 80: return avg, "A"
+    elif avg >= 65: return avg, "B"
+    elif avg >= 50: return avg, "C"
+    elif avg >= 40: return avg, "D"
+    else: return avg, "F"
 
 def main():
-    name = input("Enter Student Name: ")
-    department = input("Enter Department: ")
-    semester = input("Enter Semester: ")
-
-    m1 = float(input("Enter Marks for Subject 1: "))
-    m2 = float(input("Enter Marks for Subject 2: "))
-    m3 = float(input("Enter Marks for Subject 3: "))
+    # If arguments are provided
+    if len(sys.argv) == 7:
+        name = sys.argv[1]
+        department = sys.argv[2]
+        semester = sys.argv[3]
+        m1 = float(sys.argv[4])
+        m2 = float(sys.argv[5])
+        m3 = float(sys.argv[6])
+    else:
+        # Default values
+        name = "Padmini"
+        department = "Bcom"
+        semester = "4"
+        m1 = 75
+        m2 = 80
+        m3 = 75
 
     avg, grade = calculate_grade(m1, m2, m3)
 
-    print("\n----- Student Result -----")
-    print("Name       :", name)
-    print("Department :", department)
-    print("Semester   :", semester)
-    print("Average    :", round(avg, 2))
-    print("Grade      :", grade)
-
+    print("        STUDENT RESULT")
+    print("===================")
+    print(f"Student Name : {name}")
+    print(f"Department   : {department}")
+    print(f"Semester     : {semester}")
+    print("-----------------------------------")
+    print(f"Marks        : {m1}, {m2}, {m3}")
+    print(f"Total Marks  : {m1 + m2 + m3}")
+    print(f"Average      : {avg:.2f}")
+    print(f"Grade        : {grade}")
+    print("====================\n")
 
 if __name__ == "__main__":
     main()
